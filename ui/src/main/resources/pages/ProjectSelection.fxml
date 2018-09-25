@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.teamacronymcoders.mceditor.ui.controller.ProjectSelectionController"
+            stylesheets="/style/ProjectSelection.css"
+            prefHeight="400" prefWidth="600">
+    <HBox AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
+        <ScrollPane prefWidth="200" fitToWidth="true">
+            <VBox fx:id="recentProjects">
+
+            </VBox>
+        </ScrollPane>
+        <VBox alignment="CENTER" prefHeight="200" prefWidth="400">
+            <Button text="New Project" onMouseClicked="#createNewProject"/>
+        </VBox>
+    </HBox>
+</AnchorPane>
