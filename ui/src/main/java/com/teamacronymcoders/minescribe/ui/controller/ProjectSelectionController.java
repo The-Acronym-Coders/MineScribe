@@ -1,7 +1,7 @@
-package com.teamacronymcoders.mceditor.ui.controller;
+package com.teamacronymcoders.minescribe.ui.controller;
 
-import com.teamacronymcoders.mceditor.ui.utils.preferences.ProjectPreferences;
-import com.teamacronymcoders.mceditor.ui.utils.preferences.UserPreferences;
+import com.teamacronymcoders.minescribe.ui.utils.preferences.ProjectPreferences;
+import com.teamacronymcoders.minescribe.ui.utils.preferences.UserPreferences;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -45,6 +45,6 @@ public class ProjectSelectionController implements Initializable {
 
     @FXML
     public void createNewProject(MouseEvent mouseEvent) {
-        
+
     }
 }

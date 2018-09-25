@@ -1,6 +1,6 @@
-package com.teamacronymcoders.mceditor.ui.utils.preferences;
+package com.teamacronymcoders.minescribe.ui.utils.preferences;
 
-import com.teamacronymcoders.mceditor.ui.utils.functional.Try;
+import com.teamacronymcoders.minescribe.ui.utils.functional.Try;
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.File;

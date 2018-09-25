@@ -1,4 +1,4 @@
-package com.teamacronymcoders.mceditor.ui.utils.functional;
+package com.teamacronymcoders.minescribe.ui.utils.functional;
 
 import java.util.function.Function;
 

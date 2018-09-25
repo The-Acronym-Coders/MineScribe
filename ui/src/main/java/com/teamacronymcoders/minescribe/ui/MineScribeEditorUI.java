@@ -1,4 +1,4 @@
-package com.teamacronymcoders.mceditor.ui;
+package com.teamacronymcoders.minescribe.ui;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class MCEditorUI extends Application {
+public class MineScribeEditorUI extends Application {
 
     public static void main(String[] args) {
         launch(args);
@@ -17,7 +17,7 @@ public class MCEditorUI extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/pages/ProjectSelection.fxml"));
-        primaryStage.setTitle("MC Editor");
+        primaryStage.setTitle("MineScribe");
         primaryStage.setScene(new Scene(root, 600, 400));
         primaryStage.show();
     }
