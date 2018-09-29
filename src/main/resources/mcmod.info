@@ -1,0 +1,18 @@
+[
+  {
+    "modid": "minescribe",
+    "name": "MineScribe",
+    "description": "Mod portion of Minescribe",
+    "version": "${version}",
+    "mcversion": "${mcversion}",
+    "url": "http://minecraft.curseforge.com/projects/minescribe",
+    "updateUrl": "http://minecraft.curseforge.com/projects/minescribe/files",
+    "authorList": [
+      "SkySom"
+    ],
+    "credits": "",
+    "logoFile": "",
+    "screenshots": [],
+    "dependencies": []
+  }
+]
