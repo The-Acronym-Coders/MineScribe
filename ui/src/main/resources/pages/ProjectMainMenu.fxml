@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.*?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.teamacronymcoders.minescribe.ui.controller.ProjectMainMenuController"
+            prefHeight="400.0" prefWidth="600.0">
+    <HBox AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
+        <VBox alignment="CENTER" prefHeight="200" prefWidth="400">
+            <Button text="Json Editor" onMouseClicked="#openJsonEditor"/>
+        </VBox>
+    </HBox>
+</AnchorPane>

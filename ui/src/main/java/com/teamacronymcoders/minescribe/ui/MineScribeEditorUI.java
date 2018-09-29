@@ -1,8 +1,8 @@
 package com.teamacronymcoders.minescribe.ui;
 
+import com.teamacronymcoders.minescribe.ui.controller.BasicController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
@@ -16,9 +16,11 @@ public class MineScribeEditorUI extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/pages/ProjectSelection.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/pages/ProjectSelection.fxml"));
         primaryStage.setTitle("MineScribe");
-        primaryStage.setScene(new Scene(root, 600, 400));
+        primaryStage.setScene(new Scene(loader.load(), 600, 400));
+        BasicController controller = loader.getController();
+        controller.setPrimaryStage(primaryStage);
         primaryStage.show();
     }
 }

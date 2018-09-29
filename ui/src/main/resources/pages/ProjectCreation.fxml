@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.teamacronymcoders.minescribe.ui.controller.ProjectCreationController"
+            prefHeight="400.0" prefWidth="600.0">
+    <GridPane alignment="CENTER" hgap="10" vgap="10" prefWidth="600.0" prefHeight="400.0">
+        <columnConstraints>
+            <ColumnConstraints halignment="RIGHT" minWidth="100" prefWidth="100" maxWidth="Infinity"/>
+            <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" minWidth="200" prefWidth="200" maxWidth="Infinity"/>
+        </columnConstraints>
+
+        <Label GridPane.columnIndex="1" GridPane.rowIndex="0">
+            New Project Creation
+        </Label>
+        <Label GridPane.columnIndex="0" GridPane.rowIndex="1">
+            Project Name:
+        </Label>
+        <TextField fx:id="projectName" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+        <Label GridPane.columnIndex="0" GridPane.rowIndex="2">
+            Project Location:
+        </Label>
+        <TextField fx:id="projectLocation" GridPane.columnIndex="1" GridPane.rowIndex="2" onMouseClicked="#openLocationChooser"/>
+        <Button GridPane.rowIndex="3" GridPane.columnIndex="1" text="Create Project" onMouseClicked="#createProject"/>
+    </GridPane>
+</AnchorPane>
