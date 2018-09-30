@@ -23,6 +23,10 @@ public abstract class Try<T> {
 
     public abstract boolean isFailure();
 
+    public boolean isSuccess() {
+        return !isFailure();
+    }
+
     public static <U> Try<List<U>> sequence(List<Try<U>> listInput) {
         List<U> properInputs = new ArrayList<>();
         for (Try<U> attempted: listInput) {

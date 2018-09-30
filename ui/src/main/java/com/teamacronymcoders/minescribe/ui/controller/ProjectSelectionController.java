@@ -15,16 +15,17 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.prefs.Preferences;
 
-public class ProjectSelectionController extends BasicController implements Initializable {
+public class ProjectSelectionController extends BasicController {
     @FXML
     private VBox recentProjects;
 
+    private UserPreferences userPreferences;
+
     @FXML
-    @Override
     public void initialize(URL location, ResourceBundle resources) {
-        UserPreferences userPreferences = new UserPreferences(Preferences.userRoot());
+        userPreferences = UserPreferences.load();
         try {
-            List<ProjectPreferences> projectPreferencesList = userPreferences.getProjectPreferences().get();
+            List<ProjectPreferences> projectPreferencesList = userPreferences.getProjectPreferences();
             if (!projectPreferencesList.isEmpty()) {
                 projectPreferencesList.forEach(this::createAndAddButton);
             } else {
@@ -45,7 +46,8 @@ public class ProjectSelectionController extends BasicController implements Initi
     }
 
     private void loadProject(ProjectPreferences projectPreferences) {
-
+        userPreferences.setActiveProject(projectPreferences);
+        this.loadPage("ProjectMainMenu");
     }
 
     @FXML

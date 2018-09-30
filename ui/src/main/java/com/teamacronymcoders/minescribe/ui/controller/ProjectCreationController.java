@@ -23,10 +23,10 @@ public class ProjectCreationController extends BasicController {
     }
 
     public void createProject(MouseEvent mouseEvent) {
-        UserPreferences userPreferences = new UserPreferences(Preferences.userRoot());
+        UserPreferences userPreferences = UserPreferences.load();
         try {
             File file = new File(projectLocation.getText());
-            ProjectPreferences projectPreferences = userPreferences.createProjectPreferences(projectName.getText(), file).get();
+            ProjectPreferences projectPreferences = userPreferences.createProjectPreferences(projectName.getText(), file, true).get();
             File saveStateFile = new File(projectPreferences.folderLocation, projectPreferences.name + ".minescribe.json");
             ProjectSaveState saveState = new ProjectSaveState();
             saveState.setName(projectPreferences.name);
