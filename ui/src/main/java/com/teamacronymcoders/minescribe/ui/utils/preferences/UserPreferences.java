@@ -41,6 +41,10 @@ public class UserPreferences {
         }
     }
 
+    public File getResourceFolderLocation() {
+        return new File(minescribeNode.get("resourceFolderLocation", this.getActiveProject().folderLocation + "/resources"));
+    }
+
     public Try<ProjectPreferences> createProjectPreferences(String name, File folderLocation, boolean active) {
         Preferences preferences = this.projectsNode.node(name);
 

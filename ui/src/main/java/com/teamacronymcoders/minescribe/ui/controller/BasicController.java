@@ -23,8 +23,10 @@ public class BasicController {
 
         try {
             primaryStage.setScene(new Scene(loader.load(), primaryStage.getWidth(), primaryStage.getHeight()));
-            BasicController controller = loader.getController();
-            controller.setPrimaryStage(primaryStage);
+            if (loader.getController() instanceof BasicController) {
+                loader.<BasicController>getController().setPrimaryStage(primaryStage);
+            }
+
         } catch (IOException e) {
             showException(e);
         }

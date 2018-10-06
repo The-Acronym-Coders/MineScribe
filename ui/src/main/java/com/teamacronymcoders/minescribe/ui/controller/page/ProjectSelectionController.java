@@ -1,5 +1,6 @@
-package com.teamacronymcoders.minescribe.ui.controller;
+package com.teamacronymcoders.minescribe.ui.controller.page;
 
+import com.teamacronymcoders.minescribe.ui.controller.BasicController;
 import com.teamacronymcoders.minescribe.ui.utils.preferences.ProjectPreferences;
 import com.teamacronymcoders.minescribe.ui.utils.preferences.UserPreferences;
 import javafx.fxml.FXML;
@@ -22,7 +23,7 @@ public class ProjectSelectionController extends BasicController {
     private UserPreferences userPreferences;
 
     @FXML
-    public void initialize(URL location, ResourceBundle resources) {
+    public void initialize() {
         userPreferences = UserPreferences.load();
         try {
             List<ProjectPreferences> projectPreferencesList = userPreferences.getProjectPreferences();

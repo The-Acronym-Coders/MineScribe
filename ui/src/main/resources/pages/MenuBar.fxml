@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<MenuBar xmlns="http://javafx.com/javafx"
+         xmlns:fx="http://javafx.com/fxml"
+         fx:controller="com.teamacronymcoders.minescribe.ui.controller.partial.ProjectMenuBarController"
+         prefWidth="600.0">
+    <Menu text="File">
+        <MenuItem text="New Project" onAction="#handleNewProject"/>
+        <MenuItem text="Open Project" onAction="#handleOpenProject"/>
+    </Menu>
+    <Menu text="Tools">
+        <MenuItem text="Json Editor" onAction="#handleJsonEditor"/>
+    </Menu>
+</MenuBar>
