@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.teamacronymcoders.minescribe.ui.utils.functional.Try;
+import com.teamacronymcoders.minescribe.ui.utils.json.JsonGrabbers;
 import org.apache.commons.lang3.tuple.Pair;
 
 import java.io.File;
@@ -24,14 +25,14 @@ public class SchemaDocumentNodeHandler {
     public Try<SchemaDocument> readFromFile(File file) {
         try {
             JsonNode root = objectMapper.readTree(file);
-            String id = getObjectOrThrow(root, "$id", JsonNode::asText);
-            String schema = getObjectOrThrow(root, "$schema", JsonNode::asText);
-            String description = getObjectOrNull(root, "description", JsonNode::asText);
-            String type = getObjectOrThrow(root, "type", JsonNode::asText);
+            String id = JsonGrabbers.getObjectOrThrow(root, "$id", JsonNode::asText);
+            String schema = JsonGrabbers.getObjectOrThrow(root, "$schema", JsonNode::asText);
+            String description = JsonGrabbers.getObjectOrNull(root, "description", JsonNode::asText);
+            String type = JsonGrabbers.getObjectOrThrow(root, "type", JsonNode::asText);
 
             String[] required;
             if (root.get("required").isArray()) {
-                required = tryGetObject(root, "required", jsonNode -> {
+                required = JsonGrabbers.tryGetObject(root, "required", jsonNode -> {
                     Iterator<JsonNode> iterator = jsonNode.iterator();
                     List<String> values = Lists.newArrayList();
                     while (iterator.hasNext()) {
@@ -40,11 +41,11 @@ public class SchemaDocumentNodeHandler {
                     return values.toArray(new String[0]);
                 }).orElseGet(() -> new String[0]);
             } else {
-                required = this.tryGetObject(root, "required", JsonNode::asText)
+                required = JsonGrabbers.tryGetObject(root, "required", JsonNode::asText)
                         .map(value -> new String[]{value})
                         .orElseGet(() -> new String[0]);
             }
-            Map<String, SchemaProperty> properties = tryGetObject(root, "properties", this::handleProperties)
+            Map<String, SchemaProperty> properties = JsonGrabbers.tryGetObject(root, "properties", this::handleProperties)
                     .orElseGet(Maps::newHashMap);
 
             return Try.success(new SchemaDocument(id, schema, description, type, required, properties));
@@ -63,21 +64,5 @@ public class SchemaDocumentNodeHandler {
         SchemaProperty schemaProperty = null;
 
         return Pair.of(property.getKey(), schemaProperty);
-    }
-
-    private <T> T getObjectOrThrow(JsonNode jsonNode, String name, Function<JsonNode, T> function) {
-        return Optional.ofNullable(jsonNode.get(name))
-                .map(function)
-                .orElseThrow(() -> new IllegalStateException("Couldn't find " + name));
-    }
-
-    private <T> Optional<T> tryGetObject(JsonNode jsonNode, String name, Function<JsonNode, T> function) {
-        return Optional.ofNullable(jsonNode.get(name))
-                .map(function);
-    }
-
-    private <T> T getObjectOrNull(JsonNode jsonNode, String name, Function<JsonNode, T> function) {
-        return tryGetObject(jsonNode, name, function)
-                .orElse(null);
     }
 }
